@@ -4,6 +4,7 @@ from tkinter import *
 import pika
 from threading import Thread
 import simpleaudio as sa
+import sys
 
 #######################################################################
 # Consumer for RabbitMQ
@@ -61,7 +62,7 @@ def amqp_consume():
     amqp_connection.close()
 
 #######################################################################
-# Button Actions
+# Hide and set alerts
 #######################################################################
 def set_alert(action):
   if action == "joury0":
@@ -102,8 +103,23 @@ def reset_alert():
 
 
 #######################################################################
+# Button actions 
+#######################################################################
+
+def btn_set_alert_j0():
+  set_alert("joury0")
+def btn_set_alert_j1():
+  set_alert("joury1")
+def btn_set_alert_j2():
+  set_alert("joury2")
+def btn_reset_alert():
+  reset_alert()
+
+#######################################################################
 # Main 
 #######################################################################
+
+stand_alone="true"
 
 # Create main GUI object
 root = Tk()
@@ -119,29 +135,26 @@ p_alert = PhotoImage(file="alert.png")
 p_blank = PhotoImage(file="blank.png")
 
 # Set alert buttons
-#b_j0_set = Button( root, text="Set Alert", command=set_j0_alert )
-#b_j1_set = Button( root, text="Set Alert", command=set_j1_alert )
-#b_j2_set = Button( root, text="Set Alert", command=set_j2_alert )
-#b_j0_set.grid( row=1, column=0 )
-#b_j1_set.grid( row=1, column=1 )
-#b_j2_set.grid( row=1, column=2 )
-#
-## hide alert buttons
-#b_j0_hide = Button( root, text="Clear Alert", command=hide_j0_alert )
-#b_j1_hide = Button( root, text="Clear Alert", command=hide_j1_alert )
-#b_j2_hide = Button( root, text="Clear Alert", command=hide_j2_alert )
-#b_j0_hide.grid( column=0, row=2 )
-#b_j1_hide.grid( column=1, row=2 )
-#b_j2_hide.grid( column=2, row=2 )
-
-# Testlabel
-#ltest = Label( root, text="wurst" )
-#ltest.grid( column=1, row=3 )
-
-# Start consumer for RabbitMQ
-t1 = Thread( target=amqp_consume )
-t1.saemon = True
-t1.start()
+if stand_alone == "false":
+  # Start consumer for RabbitMQ
+  t1 = Thread( target=amqp_consume )
+  t1.saemon = True
+  t1.start()
+else:
+  b_j0_set = Button( root, text="Set Alert", command=btn_set_alert_j0 )
+  b_j1_set = Button( root, text="Set Alert", command=btn_set_alert_j1 )
+  b_j2_set = Button( root, text="Set Alert", command=btn_set_alert_j2 )
+  b_j0_set.grid( row=2, column=0 )
+  b_j1_set.grid( row=2, column=1 )
+  b_j2_set.grid( row=2, column=2 )
+  
+  # hide alert buttons
+  b_hide = Button( root, text="Clear Alert", command=btn_reset_alert )
+  b_hide.grid( column=1, row=3 )
+  
+  # Testlabel
+  #ltest = Label( root, text="wurst" )
+  #ltest.grid( column=1, row=3 )
 
 # Start main GUI
 try:
