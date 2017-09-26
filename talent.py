@@ -119,8 +119,11 @@ def btn_reset_alert():
 # Main 
 #######################################################################
 
+###################################
+# Configuration parameter
 stand_alone="true"
 
+###################################
 # Create main GUI object
 root = Tk()
 root.configure(background='black')
@@ -130,10 +133,12 @@ root.columnconfigure(0, weight=5)
 root.columnconfigure(1, weight=0)
 root.columnconfigure(2, weight=5)
 
+###################################
 # Load pictures
 p_alert = PhotoImage(file="alert.png")
 p_blank = PhotoImage(file="blank.png")
 
+###################################
 # Set alert buttons
 if stand_alone == "false":
   # Start consumer for RabbitMQ
@@ -141,6 +146,7 @@ if stand_alone == "false":
   t1.saemon = True
   t1.start()
 else:
+  # alert buttons for testing
   b_j0_set = Button( root, text="Set Alert", command=btn_set_alert_j0 )
   b_j1_set = Button( root, text="Set Alert", command=btn_set_alert_j1 )
   b_j2_set = Button( root, text="Set Alert", command=btn_set_alert_j2 )
@@ -148,7 +154,7 @@ else:
   b_j1_set.grid( row=2, column=1 )
   b_j2_set.grid( row=2, column=2 )
   
-  # hide alert buttons
+  # hide alert button for testing
   b_hide = Button( root, text="Clear Alert", command=btn_reset_alert )
   b_hide.grid( column=1, row=3 )
   
