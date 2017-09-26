@@ -1,15 +1,15 @@
 # ZBD got Talent
 
-##Installation requirement
+## Installation requirement
 * Python 3
 * Python Modules:
-** pika
+  * pika
 ```
 apt-get install python3-pika
 ```
-** simpleaudio
+  * simpleaudio
 ```
 apt-get install python3-dev libasound2-dev
 pip3 install simpleaudio
 ```
-***
+
