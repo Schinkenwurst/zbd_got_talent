@@ -17,19 +17,19 @@ def amqp_consume():
     body = body.decode('utf8')
     print("message: ", body)
 
-    if body == "joury0":
+    if body == "jury0":
       print("COMMAND: alert jury0")
-      set_alert("joury0")
+      set_alert("jury0")
       play_alarm()
 
-    elif body == "joury1":
+    elif body == "jury1":
       print("COMMAND: alert jury0")
-      set_alert("joury1")
+      set_alert("jury1")
       play_alarm()
 
-    elif body == "joury2":
+    elif body == "jury2":
       print("COMMAND: alert jury0")
-      set_alert("joury2")
+      set_alert("jury2")
       play_alarm()
 
     elif body == "reset":
@@ -71,44 +71,44 @@ def play_alarm():
 # Hide and set alerts
 #######################################################################
 def set_alert(action):
-  if action == "joury0":
-    pic_j0 = Label( root, bg="black", image=p_alert )
-    lbl_j0 = Label( root, bg="black", fg="grey", text="Eva", font=("Helvetica", 24))
+  if action == "jury0":
+    pic_j0 = Label( root, bg="black", image=pic_alert_j0 )
+    #lbl_j0 = Label( root, bg="black", fg="grey", text="Eva", font=("Helvetica", 24))
 
-    pic_j0.grid( row=0, column=1, padx='5', pady='5', sticky='ew' )
-    lbl_j0.grid( row=0, column=0, padx='5', pady='5', sticky='ew' )
+    pic_j0.grid( row=0, column=0, padx='0', pady='0' )
+    #lbl_j0.grid( row=0, column=0, padx='5', pady='5', sticky='ew' )
 
-  elif action == "joury1":
-    pic_j1 = Label( root, bg="black", image=p_alert )
-    lbl_j1 = Label( root, bg="black", fg="grey", text="Fabian", font=("Helvetica", 24))
+  elif action == "jury1":
+    pic_j1 = Label( root, bg="black", image=pic_alert_j1 )
+    #lbl_j1 = Label( root, bg="black", fg="grey", text="Fabian", font=("Helvetica", 24))
 
-    pic_j1.grid( row=0, column=3, padx='5', pady='5', sticky='ew' )
-    lbl_j1.grid( row=0, column=2, padx='5', pady='5', sticky='ew' )
+    pic_j1.grid( row=0, column=1, padx='0', pady='0' )
+    #lbl_j1.grid( row=0, column=2, padx='5', pady='5', sticky='ew' )
 
-  elif action == "joury2":
-    pic_j2 = Label( root, bg="black", image=p_alert )
-    lbl_j2 = Label( root, bg="black", fg="grey", text="Tim", font=("Helvetica", 24))
+  elif action == "jury2":
+    pic_j2 = Label( root, bg="black", image=pic_alert_j2 )
+    #lbl_j2 = Label( root, bg="black", fg="grey", text="Tim", font=("Helvetica", 24))
 
-    pic_j2.grid( row=0, column=5, padx='5', pady='5', sticky='ew' )
-    lbl_j2.grid( row=0, column=4, padx='5', pady='5', sticky='ew' )
+    pic_j2.grid( row=0, column=2, padx='0', pady='0' )
+    #lbl_j2.grid( row=0, column=4, padx='5', pady='5', sticky='ew' )
   
   # Play alarm sound ;)
   play_alarm()
 
 def reset_alert():
-    pic_j0 = Label( root, bg="black", image=p_blank )
-    pic_j1 = Label( root, bg="black", image=p_blank )
-    pic_j2 = Label( root, bg="black", image=p_blank )
-    lbl_j0 = Label( root, bg="black", fg="grey", text="", font=("Helvetica", 24))
-    lbl_j1 = Label( root, bg="black", fg="grey", text="", font=("Helvetica", 24))
-    lbl_j2 = Label( root, bg="black", fg="grey", text="", font=("Helvetica", 24))
+    pic_j0 = Label( root, bg="black", image=pic_blank )
+    pic_j1 = Label( root, bg="black", image=pic_blank )
+    pic_j2 = Label( root, bg="black", image=pic_blank )
+    #lbl_j0 = Label( root, bg="black", fg="grey", text="", font=("Helvetica", 24))
+    #lbl_j1 = Label( root, bg="black", fg="grey", text="", font=("Helvetica", 24))
+    #lbl_j2 = Label( root, bg="black", fg="grey", text="", font=("Helvetica", 24))
 
-    pic_j0.grid( row=0, column=1, padx='5', pady='5', sticky='ew' )
-    pic_j1.grid( row=0, column=3, padx='5', pady='5', sticky='ew' )
-    pic_j2.grid( row=0, column=5, padx='5', pady='5', sticky='ew' )
-    lbl_j0.grid( row=0, column=0, padx='5', pady='5', sticky='ew' )
-    lbl_j1.grid( row=0, column=2, padx='5', pady='5', sticky='ew' )
-    lbl_j2.grid( row=0, column=4, padx='5', pady='5', sticky='ew' )
+    pic_j0.grid( row=0, column=0, padx='5', pady='5', sticky='ew' )
+    pic_j1.grid( row=0, column=1, padx='5', pady='5', sticky='ew' )
+    pic_j2.grid( row=0, column=2, padx='5', pady='5', sticky='ew' )
+    #lbl_j0.grid( row=0, column=0, padx='5', pady='5', sticky='ew' )
+    #lbl_j1.grid( row=0, column=1, padx='5', pady='5', sticky='ew' )
+    #lbl_j2.grid( row=0, column=2, padx='5', pady='5', sticky='ew' )
 
 
 #######################################################################
@@ -116,11 +116,11 @@ def reset_alert():
 #######################################################################
 
 def btn_set_alert_j0():
-  set_alert("joury0")
+  set_alert("jury0")
 def btn_set_alert_j1():
-  set_alert("joury1")
+  set_alert("jury1")
 def btn_set_alert_j2():
-  set_alert("joury2")
+  set_alert("jury2")
 def btn_reset_alert():
   reset_alert()
 
@@ -143,13 +143,14 @@ root.title("ZBD got Talent")
 root.columnconfigure(0, weight=1)
 root.columnconfigure(1, weight=1)
 root.columnconfigure(2, weight=1)
-root.columnconfigure(3, weight=1)
-root.columnconfigure(4, weight=1)
-root.columnconfigure(5, weight=1)
+
 ###################################
 # Load pictures
-p_alert = PhotoImage(file="alert.png")
-p_blank = PhotoImage(file="blank.png")
+#p_alert = PhotoImage(file="alert.png")
+pic_alert_j0 = PhotoImage(file="alert_bruce.png")
+pic_alert_j1 = PhotoImage(file="alert_nazan.png")
+pic_alert_j2 = PhotoImage(file="alert_bobo.png")
+pic_blank = PhotoImage(file="blank.png")
 
 ###################################
 # Set alert buttons
@@ -163,13 +164,13 @@ else:
   b_j0_set = Button( root, text="Set Alert", command=btn_set_alert_j0 )
   b_j1_set = Button( root, text="Set Alert", command=btn_set_alert_j1 )
   b_j2_set = Button( root, text="Set Alert", command=btn_set_alert_j2 )
-  b_j0_set.grid( row=2, column=1 )
-  b_j1_set.grid( row=2, column=3 )
-  b_j2_set.grid( row=2, column=5 )
+  b_j0_set.grid( row=1, column=0 )
+  b_j1_set.grid( row=1, column=1 )
+  b_j2_set.grid( row=1, column=2 )
   
   # hide alert button for testing
   b_hide = Button( root, text="Clear Alert", command=btn_reset_alert )
-  b_hide.grid( column=3, row=3 )
+  b_hide.grid( row=2, column=1 )
   
   # Testlabel
   #ltest = Label( root, text="wurst" )
