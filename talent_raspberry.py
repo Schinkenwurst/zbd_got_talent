@@ -23,15 +23,18 @@ def send_message(message):
 
 
 def button1(channel):
-  print "Button 1 pressed"
+  count_j0+=1
+  print("Button 1 pressed", count_j0)
   send_message("button1\n")
 
 def button2(channel):
-  print "Button 2 Pressed"
+  count_j0+=1
+  print ("Button 2 Pressed", count_j1)
   send_message("button2\n")
 
 def button3(channel):
-  print "Button 3 Pressed"
+  count_j0+=1
+  print ("Button 3 Pressed", count_j2)
   send_message("button3\n")
 
 GPIO.add_event_detect(17, GPIO.FALLING, callback=button1, bouncetime=300)
@@ -41,6 +44,10 @@ GPIO.add_event_detect(22, GPIO.FALLING, callback=button3, bouncetime=400)
 #GPIO.add_event_detect(17, GPIO.FALLING, callback=button1)
 #GPIO.add_event_detect(27, GPIO.FALLING, callback=button2)
 #GPIO.add_event_detect(22, GPIO.FALLING, callback=button3)
+
+count_j0=0
+count_j1=0
+count_j2=0
 
 try:
   time.sleep(1000)
