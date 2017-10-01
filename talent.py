@@ -11,26 +11,25 @@ def amqp_consume():
   # Callback on message
   def onmessage(ch, method, properties, body):
     body = body.decode('utf8')
-    print("message: ", body)
 
     if body == "jury0":
-      print("COMMAND: alert jury0")
+      print("[INFO] Alert jury0")
       set_alert("jury0")
 
     elif body == "jury1":
-      print("COMMAND: alert jury0")
+      print("[INFO] Alert jury1")
       set_alert("jury1")
 
     elif body == "jury2":
-      print("COMMAND: alert jury0")
+      print("[INFO] Alert jury2")
       set_alert("jury2")
 
     elif body == "reset":
-      print("COMMAND: reset")
+      print("[INFO] Reset")
       reset_alert()
 
     else:
-      print("COMMAND: UNKNOWN")
+      print("[INFO] UNKNOWN")
 
     # Newline for nicer looking
     print()
@@ -54,8 +53,8 @@ def amqp_consume():
 #######################################################################
 # Play buzzer-sound
 def play_alarm():
-  print("DEBUG: Playing alarm")
-  wave_obj = sa.WaveObject.from_wave_file("buzzer1.wav")
+  print("[INFO] Playing sound")
+  wave_obj = sa.WaveObject.from_wave_file("sounds/buzzer1.wav")
   play_obj = wave_obj.play()
   play_obj.wait_done()
 
@@ -82,13 +81,13 @@ def set_alert(action):
 #######################################################################
 # Reset alerts
 def reset_alert():
-    pic_j0 = Label( root, bg="black", image=pic_blank )
-    pic_j1 = Label( root, bg="black", image=pic_blank )
-    pic_j2 = Label( root, bg="black", image=pic_blank )
+    pic_j0 = Label( root, bg="black", image=pic_blank_j0 )
+    pic_j1 = Label( root, bg="black", image=pic_blank_j1 )
+    pic_j2 = Label( root, bg="black", image=pic_blank_j2 )
 
-    pic_j0.grid( row=0, column=0, padx='5', pady='5', sticky='ew' )
-    pic_j1.grid( row=0, column=1, padx='5', pady='5', sticky='ew' )
-    pic_j2.grid( row=0, column=2, padx='5', pady='5', sticky='ew' )
+    pic_j0.grid( row=0, column=0, padx='5', pady='5' )
+    pic_j1.grid( row=0, column=1, padx='5', pady='5' )
+    pic_j2.grid( row=0, column=2, padx='5', pady='5' )
 
 
 #######################################################################
@@ -124,10 +123,16 @@ root.columnconfigure(2, weight=5)
 
 ###################################
 # Load pictures
-pic_alert_j0 = PhotoImage(file="alert_bruce.png")
-pic_alert_j1 = PhotoImage(file="alert_nazan.png")
-pic_alert_j2 = PhotoImage(file="alert_bobo.png")
-pic_blank = PhotoImage(file="blank.png")
+pic_alert_j0 = PhotoImage(file="images/alert_bruce.png")
+pic_alert_j1 = PhotoImage(file="images/alert_nazan.png")
+pic_alert_j2 = PhotoImage(file="images/alert_dieter.png")
+pic_blank_j0 = PhotoImage(file="images/blank_bruce.png")
+pic_blank_j1 = PhotoImage(file="images/blank_nazan.png")
+pic_blank_j2 = PhotoImage(file="images/blank_dieter.png")
+
+###################################
+# Init
+reset_alert()
 
 ###################################
 # Start RabbitMQ-Consumer or use buttons for simulation
