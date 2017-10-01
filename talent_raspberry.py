@@ -25,19 +25,19 @@ def send_message(message):
 def button1(channel):
   global count_j0
   count_j0+=1
-  print ("Button 1 pressed", count_j0)
+  print ("[INFO] Alarm Jury0:", count_j0)
   send_message("jury0")
 
 def button2(channel):
   global count_j1
   count_j1+=1
-  print ("Button 2 Pressed", count_j1)
+  print ("[INFO] Alarm Jury1:", count_j1)
   send_message("jury1")
 
 def button3(channel):
   global count_j2
   count_j2+=1
-  print ("Button 3 Pressed", count_j2)
+  print ("[INFO] Alarm Jury2:", count_j2)
   send_message("jury2")
 
 GPIO.add_event_detect(17, GPIO.FALLING, callback=button1, bouncetime=100)
