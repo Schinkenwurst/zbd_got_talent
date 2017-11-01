@@ -36,9 +36,9 @@ def amqp_consume():
         print()
 
     # Main of amqp_consume
-    amqp_credentials = pika.PlainCredentials('buzzer', 'buzzer')
+    amqp_credentials = pika.PlainCredentials('zbdgt', 'schinken')
     amqp_parameter = pika.ConnectionParameters(
-        '192.168.0.127', 5672, '/', amqp_credentials)
+        '192.168.0.1', 5672, '/', amqp_credentials)
     amqp_connection = pika.BlockingConnection(amqp_parameter)
     amqp_channel = amqp_connection.channel()
 
